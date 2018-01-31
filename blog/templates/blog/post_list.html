@@ -1,39 +1,13 @@
-<!-- it is template --!>
+{% extends 'blog/base.html'  %}
 
-<html>
-    
-    <head>
-        <title>Kim's Blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Django Girls Blog</a></h1>
-            {{posts}}
-        </div>
-        
-        <div>
-            <h1> list of post </h1>
-            {% for post in posts %}
-                {{post}}<br>
-            {% endfor %}
-        </div>
-        
-        {% for post in posts %}
-        <div>
-            <p>published : {{post.published_date}} </p>
+{% block content %}    
+    {% for post in posts %}
+        <div class="post">
+            <div class="date"> 
+                <p>published : {{post.published_date}} </p>
+            </div>
             <h1><a href=""> {{post.title}} </a></h1>
             <p>{{ post.text | linebreaksbr }}</p>
         </div>
-        {% endfor %}
-
-        <div>
-            <p>published : 14.06.2014, 12:14</p>
-            <h2><a href=""> My First Post </a></h2>
-            <p Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec.....</p>
-        </div>
-        <div>
-             <p>Hi there!</p>
-             <p>It works!</p>
-        </div>
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
